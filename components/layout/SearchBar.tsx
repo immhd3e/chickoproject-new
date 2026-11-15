@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -6,42 +5,32 @@ import { Search, X } from "lucide-react";
 import { useState } from "react";
 
 const suggestions = [
-  {
-    title: "کمد دیواری",
-    href: "/products?category=wardrobes",
-  },
-  {
-    title: "سرویس خواب",
-    href: "/products?category=bedroom",
-  },
-  {
-    title: "اتاق کودک",
-    href: "/products?category=kids-room",
-  },
-  {
-    title: "میز تحریر",
-    href: "/products?category=tables-bookcases",
-  },
+  { title: "کمد دیواری", href: "/products?category=wardrobes" },
+  { title: "سرویس خواب", href: "/products?category=bedroom" },
+  { title: "اتاق کودک", href: "/products?category=kids-room" },
+  { title: "میز تحریر", href: "/products?category=tables-bookcases" },
 ];
+
+// یکسان‌سازی «ي» و «ك» عربی با «ی» و «ک» فارسی
+const normalize = (value: string) =>
+  value.trim().replace(/\u064A/g, "\u06CC").replace(/\u0643/g, "\u06A9").toLowerCase();
 
 export default function SearchBar() {
   const [query, setQuery] = useState("");
   const [isFocused, setIsFocused] = useState(false);
 
-  const filteredSuggestions = suggestions.filter((item) =>
-    item.title.includes(query.trim())
-  );
-
-  const showSuggestions =
-    isFocused && query.trim().length > 0;
+  const q = normalize(query);
+  const filteredSuggestions = suggestions.filter((s) => normalize(s.title).includes(q));
+  const showSuggestions = isFocused && q.length > 0;
 
   return (
     <div className="relative w-full">
-      {/* فرم جست‌وجو */}
+      {/* فرم باید بالاتر از لایهٔ بستن پیشنهادها باشد (z-50) */}
       <form
         action="/products"
         method="GET"
-        className="relative"
+        className="relative z-50"
+        onSubmit={() => setIsFocused(false)}
       >
         <Search
           size={19}
@@ -79,7 +68,6 @@ export default function SearchBar() {
         </button>
       </form>
 
-      {/* پیشنهادهای جستجو */}
       {showSuggestions && (
         <>
           <button
@@ -90,14 +78,20 @@ export default function SearchBar() {
           />
 
           <div className="absolute right-0 top-full z-50 mt-2 w-full overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-2xl">
-            <div className="border-b border-stone-100 px-4 py-3">
-              <p className="text-xs font-semibold text-stone-400">
-                نتایج پیشنهادی
-              </p>
+            <div className="p-2">
+              <Link
+                href={`/products?q=${encodeURIComponent(query.trim())}`}
+                onClick={() => setIsFocused(false)}
+                className="flex items-center justify-between rounded-xl bg-amber-50 px-3 py-3 text-sm font-medium text-amber-800 transition hover:bg-amber-100"
+              >
+                <span>جستجوی «{query.trim()}» در همهٔ محصولات</span>
+                <Search size={16} />
+              </Link>
             </div>
 
-            {filteredSuggestions.length > 0 ? (
-              <div className="p-2">
+            {filteredSuggestions.length > 0 && (
+              <div className="border-t border-stone-100 p-2">
+                <p className="px-3 py-2 text-xs font-semibold text-stone-400">دسته‌بندی‌های پیشنهادی</p>
                 {filteredSuggestions.map((item) => (
                   <Link
                     key={item.href}
@@ -112,13 +106,6 @@ export default function SearchBar() {
                     <Search size={16} />
                   </Link>
                 ))}
-              </div>
-            ) : (
-              <div className="px-4 py-6 text-center">
-                <p className="text-sm text-stone-500">
-                  برای این عبارت پیشنهاد مستقیمی نداریم.
-                  با Enter همه محصولات جست‌وجو می‌شوند.
-                </p>
               </div>
             )}
           </div>

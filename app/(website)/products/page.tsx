@@ -47,8 +47,12 @@ export default async function ProductsPage({ searchParams }: Props) {
 
     if (type && p.type !== type) return false;
 
-    if (query && !normalize(p.title).includes(query)) {
-      return false;
+    if (query) {
+      const catTitle = categories.find((c) => c.slug === p.category)?.title ?? "";
+      const haystack = normalize(
+        [p.title, p.code ?? "", p.shortDescription ?? "", p.description, catTitle].join(" ")
+      );
+      if (!query.split(/\s+/).every((word) => haystack.includes(word))) return false;
     }
 
     return true;

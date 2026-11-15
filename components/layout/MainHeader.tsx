@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import SearchBar from "./SearchBar";
 import { Heart, Search, ShoppingBag, UserRound } from "lucide-react";
 
 import { useCart } from "@/components/cart/CartProvider";
@@ -27,7 +28,7 @@ export default function MainHeader({ onMenuClick }: MainHeaderProps) {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-stone-950 text-lg font-bold text-white">
-             <img src="../images/home/logo.jpg" alt="Logo"/>
+             <img src="/images/home/logo.jpg" alt="Logo"/>
           </div>
 
           <div className="hidden sm:block">
@@ -40,14 +41,7 @@ export default function MainHeader({ onMenuClick }: MainHeaderProps) {
 
         {/* Desktop Search */}
         <div className="mx-10 hidden max-w-xl flex-1 lg:block">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="جستجوی محصول، دسته‌بندی یا نمونه‌کار..."
-              className="h-11 w-full rounded-full border border-stone-200 bg-stone-50 px-5 pr-12 text-sm text-stone-800 outline-none transition placeholder:text-stone-400 focus:border-amber-600 focus:bg-white focus:ring-2 focus:ring-amber-100"
-            />
-            <Search size={19} className="absolute right-4 top-1/2 -translate-y-1/2 text-stone-500" />
-          </div>
+          <SearchBar />
         </div>
 
         {/* Actions */}
