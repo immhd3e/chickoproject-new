@@ -9,8 +9,9 @@ const items = [
   { href: "/admin/consultations", label: "درخواست‌های مشاوره" },
   { href: "/admin/products", label: "محصولات" },
   { href: "/admin/categories", label: "دسته‌بندی‌ها" },
+  { href: "/admin/about", label: "درباره ما" },
   { href: "/admin/collections", label: "مجموعه‌ها", soon: true },
-  { href: "/admin/portfolio", label: "نمونه‌کارها" },
+  { href: "/admin/portfolio", label: "نمونه‌کارها", soon: true },
 ];
 
 export default function AdminNav() {

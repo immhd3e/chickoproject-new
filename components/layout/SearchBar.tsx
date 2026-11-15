@@ -32,12 +32,17 @@ export default function SearchBar() {
     item.title.includes(query.trim())
   );
 
-  const showSuggestions = isFocused && query.trim().length > 0;
+  const showSuggestions =
+    isFocused && query.trim().length > 0;
 
   return (
     <div className="relative w-full">
-      {/* Search Input */}
-      <div className="relative">
+      {/* فرم جست‌وجو */}
+      <form
+        action="/products"
+        method="GET"
+        className="relative"
+      >
         <Search
           size={19}
           className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-stone-400"
@@ -45,38 +50,45 @@ export default function SearchBar() {
 
         <input
           type="text"
+          name="q"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           onFocus={() => setIsFocused(true)}
           placeholder="جستجو در محصولات..."
-          className="h-11 w-full rounded-xl border border-stone-200 bg-stone-50 px-12 pl-10 text-sm text-stone-900 outline-none transition-all duration-200 placeholder:text-stone-400 focus:border-amber-600 focus:bg-white focus:ring-2 focus:ring-amber-100"
+          autoComplete="off"
+          className="h-11 w-full rounded-xl border border-stone-200 bg-stone-50 px-12 pl-12 text-sm text-stone-900 outline-none transition-all placeholder:text-stone-400 focus:border-amber-600 focus:bg-white focus:ring-2 focus:ring-amber-100"
         />
 
-        {/* Clear Button */}
         {query && (
           <button
             type="button"
             onClick={() => setQuery("")}
-            className="absolute left-3 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-stone-400 transition hover:bg-stone-100 hover:text-stone-700"
+            className="absolute left-12 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full text-stone-400 hover:bg-stone-100"
             aria-label="پاک کردن جستجو"
           >
             <X size={16} />
           </button>
         )}
-      </div>
 
-      {/* Search Suggestions */}
+        <button
+          type="submit"
+          aria-label="جستجو"
+          className="absolute left-2 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-stone-500 transition hover:bg-amber-100 hover:text-amber-700"
+        >
+          <Search size={17} />
+        </button>
+      </form>
+
+      {/* پیشنهادهای جستجو */}
       {showSuggestions && (
         <>
-          {/* Background Click Area */}
           <button
             type="button"
-            aria-label="بستن پیشنهادهای جستجو"
+            aria-label="بستن پیشنهادها"
             className="fixed inset-0 z-40 cursor-default"
             onClick={() => setIsFocused(false)}
           />
 
-          {/* Suggestions Box */}
           <div className="absolute right-0 top-full z-50 mt-2 w-full overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-2xl">
             <div className="border-b border-stone-100 px-4 py-3">
               <p className="text-xs font-semibold text-stone-400">
@@ -97,18 +109,15 @@ export default function SearchBar() {
                     className="flex items-center justify-between rounded-xl px-3 py-3 text-sm text-stone-700 transition hover:bg-stone-50 hover:text-amber-700"
                   >
                     <span>{item.title}</span>
-
-                    <Search
-                      size={16}
-                      className="text-stone-400"
-                    />
+                    <Search size={16} />
                   </Link>
                 ))}
               </div>
             ) : (
               <div className="px-4 py-6 text-center">
                 <p className="text-sm text-stone-500">
-                  نتیجه‌ای پیدا نشد.
+                  برای این عبارت پیشنهاد مستقیمی نداریم.
+                  با Enter همه محصولات جست‌وجو می‌شوند.
                 </p>
               </div>
             )}
@@ -118,4 +127,3 @@ export default function SearchBar() {
     </div>
   );
 }
-

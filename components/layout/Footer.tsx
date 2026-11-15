@@ -20,7 +20,7 @@ export default function Footer({ categories }: { categories: Category[] }) {
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-lg font-bold text-stone-950">M</div>
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-lg font-bold text-stone-950"><img src="../images/home/logo.jpg" alt="Logo"/></div>
             <div className="text-xl font-bold text-white">MDF<span className="text-amber-500">Factory</span></div>
           </div>
           <p className="mt-4 text-sm leading-7 text-stone-400">طراحی، تولید و اجرای کمد، سرویس نوزاد و دکوراسیون داخلی با MDF، مستقیم از کارخانه.</p>

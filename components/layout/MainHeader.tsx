@@ -27,14 +27,14 @@ export default function MainHeader({ onMenuClick }: MainHeaderProps) {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-stone-950 text-lg font-bold text-white">
-            M
+             <img src="../images/home/logo.jpg" alt="Logo"/>
           </div>
 
           <div className="hidden sm:block">
             <div className="text-xl font-bold tracking-tight text-stone-950">
               MDF<span className="text-amber-700">چیکو</span>
             </div>
-            <p className="text-[10px] tracking-widest text-stone-500">WOOD & INTERIOR</p>
+            {/* <p className="text-[10px] tracking-widest text-stone-500">WOOD & INTERIOR</p> */}
           </div>
         </Link>
 

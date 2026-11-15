@@ -137,9 +137,6 @@ export default function HeroSection({
                         {/* Slide Info */}
                         <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5">
                           <div className="rounded-xl border border-white/10 bg-black/35 p-3 backdrop-blur-md sm:rounded-2xl sm:p-5">
-                            <p className="text-[9px] text-stone-300 sm:text-xs">
-                              {slide.label}
-                            </p>
 
                             <p className="mt-1 text-sm font-bold sm:text-lg md:text-xl">
                               {slide.title}

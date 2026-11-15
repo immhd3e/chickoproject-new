@@ -31,7 +31,7 @@ export default async function PanelLayout({
           <span className="text-lg font-bold">
             MDF<span className="text-amber-500">Factory</span>
             <span className="mr-2 text-xs font-normal text-stone-400">
-              پنل مدیریت
+              پنل مدیریتcx
             </span>
           </span>
         </div>

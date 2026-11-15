@@ -5,14 +5,16 @@ import { ChevronLeft, ChevronRight, Star, Trash2, Upload } from "lucide-react";
 
 const MAX = 12;
 
-// همهٔ عکس‌های یک محصول در یک جا: عکس اول، عکس اصلی است
+// چند عکس در یک جا: عکس اول، عکس اصلی است
 export default function PhotoManager({
   name = "photos",
   label = "عکس‌های محصول",
+  hint = "چند عکس را یک‌جا انتخاب کن. عکس اول، عکس اصلی محصول است؛ با ستاره می‌توانی هر عکس را اصلی کنی.",
   initial,
 }: {
   name?: string;
   label?: string;
+  hint?: string;
   initial: string[];
 }) {
   const [urls, setUrls] = useState<string[]>(initial);
@@ -66,9 +68,7 @@ export default function PhotoManager({
   return (
     <div>
       <p className="mb-1 block text-sm font-medium text-stone-700">{label}</p>
-      <p className="mb-3 text-xs leading-6 text-stone-500">
-        چند عکس را یک‌جا انتخاب کن. عکس اول، عکس اصلی محصول است؛ با ستاره می‌توانی هر عکس را اصلی کنی.
-      </p>
+      <p className="mb-3 text-xs leading-6 text-stone-500">{hint}</p>
 
       {urls.length > 0 && (
         <div className="mb-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">

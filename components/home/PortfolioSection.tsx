@@ -22,9 +22,6 @@ export default function PortfolioSection() {
 
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-sm font-semibold tracking-widest text-amber-700">
-              OUR PROJECTS
-            </p>
 
             <h2 className="mt-3 text-3xl font-bold text-stone-950 sm:text-4xl">
               نمونه‌کارهای ما

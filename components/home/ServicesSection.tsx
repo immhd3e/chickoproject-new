@@ -42,9 +42,6 @@ export default function ServicesSection() {
 
         {/* Header */}
         <div className="max-w-2xl">
-          <p className="text-xs font-semibold tracking-widest text-amber-500 sm:text-sm">
-            OUR SERVICES
-          </p>
 
           <h2 className="mt-2 text-2xl font-bold sm:mt-3 sm:text-4xl">
             از ایده تا اجرای نهایی

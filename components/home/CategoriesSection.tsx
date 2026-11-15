@@ -12,7 +12,6 @@ export default async function CategoriesSection() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-sm font-semibold tracking-widest text-amber-700">CATEGORIES</p>
             <h2 className="mt-3 text-3xl font-bold text-stone-950 sm:text-4xl">دسته‌بندی محصولات</h2>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-stone-500 sm:text-base">
               مجموعه‌ای از محصولات MDF برای بخش‌های مختلف خانه، اتاق کودک و فضای کاری با امکان طراحی و اجرای سفارشی.
