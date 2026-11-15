@@ -56,9 +56,13 @@ export default async function ProductPage({ params }: Props) {
         ]}
       />
 
-      <div className="mt-8 grid gap-10 lg:grid-cols-2">
+      {/* عکس بزرگ بالای صفحه */}
+      <div className="mt-8">
         <ProductGallery images={product.images ?? [product.image]} title={product.title} />
+      </div>
 
+      {/* اطلاعات محصول پایین عکس */}
+      <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_380px] lg:items-start">
         <div>
           <h1 className="text-3xl font-bold leading-[1.5] text-stone-950">{product.title}</h1>
           {product.code && <p className="mt-1 text-sm text-stone-500">کد محصول: <span dir="ltr">{product.code}</span></p>}
@@ -67,17 +71,7 @@ export default async function ProductPage({ params }: Props) {
             <FavoriteButton productId={product.id} title={product.title} variant="inline" />
           </div>
 
-          <div className="mt-4 flex flex-wrap items-center gap-3">
-            <p className="text-2xl font-bold text-amber-700">{formatPrice(product.price)}</p>
-            {discount > 0 && product.oldPrice && (
-              <>
-                <p className="text-base text-stone-400 line-through">{formatPrice(product.oldPrice)}</p>
-                <span className="rounded-full bg-red-600 px-2.5 py-1 text-xs font-bold text-white">{toFa(discount)}٪ تخفیف</span>
-              </>
-            )}
-          </div>
-
-          {product.shortDescription && <p className="mt-4 font-medium leading-8 text-stone-700">{product.shortDescription}</p>}
+          {product.shortDescription && <p className="mt-5 font-medium leading-8 text-stone-700">{product.shortDescription}</p>}
           <p className="mt-4 leading-8 text-stone-600">{product.description}</p>
 
           {product.colors && (
@@ -104,8 +98,21 @@ export default async function ProductPage({ params }: Props) {
               ))}
             </ul>
           )}
+        </div>
 
-          <div className="mt-8">
+        {/* کارت خرید */}
+        <aside className="rounded-2xl border border-stone-200 bg-white p-6 lg:sticky lg:top-24">
+          <div className="flex flex-wrap items-center gap-3">
+            <p className="text-2xl font-bold text-amber-700">{formatPrice(product.price)}</p>
+            {discount > 0 && product.oldPrice && (
+              <>
+                <p className="text-base text-stone-400 line-through">{formatPrice(product.oldPrice)}</p>
+                <span className="rounded-full bg-red-600 px-2.5 py-1 text-xs font-bold text-white">{toFa(discount)}٪ تخفیف</span>
+              </>
+            )}
+          </div>
+
+          <div className="mt-6">
             <AddToCartPanel
               item={{ id: product.id, slug: product.slug, title: product.title, price: product.price, image: product.image }}
             />
@@ -115,11 +122,11 @@ export default async function ProductPage({ params }: Props) {
 
           <Link
             href="/contact?subject=custom"
-            className="mt-6 inline-flex items-center rounded-xl border border-stone-300 px-5 py-3 text-sm font-semibold text-stone-800 transition hover:border-amber-600 hover:text-amber-700"
+            className="mt-5 flex items-center justify-center rounded-xl border border-stone-300 px-5 py-3 text-center text-sm font-semibold text-stone-800 transition hover:border-amber-600 hover:text-amber-700"
           >
             ابعاد یا طرح دیگری می‌خواهید؟ درخواست مشاوره
           </Link>
-        </div>
+        </aside>
       </div>
 
       <section className="mt-16">

@@ -74,19 +74,7 @@ export default function HeroSection({
       {/* CONTENT */}
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
-          className="
-            flex
-            flex-col
-            gap-8
-            py-8
-            sm:gap-10
-            sm:py-14
-            lg:grid
-            lg:grid-cols-2
-            lg:items-center
-            lg:gap-12
-            lg:py-20
-          "
+          className="flex flex-col gap-8 py-8 sm:gap-10 sm:py-14 lg:grid lg:grid-cols-2 lg:items-center lg:gap-12 lg:py-20"
         >
           {/* SLIDER */}
           <div className="order-1 w-full min-w-0 lg:order-2">
@@ -111,17 +99,7 @@ export default function HeroSection({
                   <SwiperSlide key={`${slide.image}-${index}`}>
                     <div className="relative w-full overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/10 p-2 shadow-2xl backdrop-blur-sm sm:rounded-[2rem] sm:p-3">
                       <div
-                        className="
-                          relative
-                          h-[260px]
-                          w-full
-                          overflow-hidden
-                          rounded-[1.2rem]
-                          sm:h-[360px]
-                          sm:rounded-[1.5rem]
-                          md:h-[420px]
-                          lg:h-[540px]
-                        "
+                        className="relative h-[260px] w-full overflow-hidden rounded-[1.2rem] sm:h-[360px] sm:rounded-[1.5rem] md:h-[420px] lg:h-[540px]"
                       >
                         <Image
                           src={slide.image}
